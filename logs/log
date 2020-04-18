@@ -1,0 +1,4 @@
+[W 200414 09:49:20 passport:18] warning msg
+[E 200414 09:49:20 passport:19] error msg
+[W 200414 09:50:40 web:2162] 404 GET /api/check_login (127.0.0.1) 2.29ms
+[W 200414 09:50:40 web:2162] 404 GET /api/house/index (127.0.0.1) 0.99ms
