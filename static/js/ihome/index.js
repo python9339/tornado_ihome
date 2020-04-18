@@ -58,33 +58,33 @@ function goToSearchPage(th) {
 }
 
 $(document).ready(function(){
-    $.get("/api/check_login", function(data) {
-        if ("0" == data.errcode) {
+    $.get("/api/checkLogin", function(data) {
+        if ("0" == data.errorcode) {
             $(".top-bar>.user-info>.user-name").html(data.data.name);
             $(".top-bar>.user-info").show();
         } else {
             $(".top-bar>.register-login").show();
         }
     }, "json");
-    $.get("/api/house/index", function(data){
-        if ("0" == data.errcode) {
-            $(".swiper-wrapper").html(template("swiper-houses-tmpl", {houses:data.houses}));
-            $(".area-list").html(template("area-list-tmpl", {areas:data.areas}));
-            var mySwiper = new Swiper ('.swiper-container', {
-                loop: true,
-                autoplay: 2000,
-                autoplayDisableOnInteraction: false,
-                pagination: '.swiper-pagination',
-                paginationClickable: true
-            });
-            $(".area-list a").click(function(e){
-                $("#area-btn").html($(this).html());
-                $(".search-btn").attr("area-id", $(this).attr("area-id"));
-                $(".search-btn").attr("area-name", $(this).html());
-                $("#area-modal").modal("hide");
-            });
-        }
-    });
+    // $.get("/api/house/index", function(data){
+    //     if ("0" == data.errcode) {
+    //         $(".swiper-wrapper").html(template("swiper-houses-tmpl", {houses:data.houses}));
+    //         $(".area-list").html(template("area-list-tmpl", {areas:data.areas}));
+    //         var mySwiper = new Swiper ('.swiper-container', {
+    //             loop: true,
+    //             autoplay: 2000,
+    //             autoplayDisableOnInteraction: false,
+    //             pagination: '.swiper-pagination',
+    //             paginationClickable: true
+    //         });
+    //         $(".area-list a").click(function(e){
+    //             $("#area-btn").html($(this).html());
+    //             $(".search-btn").attr("area-id", $(this).attr("area-id"));
+    //             $(".search-btn").attr("area-name", $(this).html());
+    //             $("#area-modal").modal("hide");
+    //         });
+    //     }
+    // });
     $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
     $(window).on('resize', centerModals);               //当窗口大小变化的时候
     $("#start-date").datepicker({
@@ -97,4 +97,4 @@ $(document).ready(function(){
         var date = $(this).datepicker("getFormattedDate");
         $("#start-date-input").val(date);
     });
-})
+});
